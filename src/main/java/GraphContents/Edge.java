@@ -1,3 +1,7 @@
+package GraphContents;
+
+import GraphContents.Node;
+
 public class Edge<E> {
     private int cost;
     private Node<E> start;

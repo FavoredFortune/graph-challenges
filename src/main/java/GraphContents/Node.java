@@ -1,3 +1,5 @@
+package GraphContents;
+
 import java.util.Set;
 
 public class Node<E> {

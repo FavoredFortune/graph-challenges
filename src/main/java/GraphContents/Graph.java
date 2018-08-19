@@ -1,3 +1,8 @@
+package GraphContents;
+
+import GraphContents.Edge;
+import GraphContents.Node;
+
 import java.util.Set;
 
 public interface Graph<E> {

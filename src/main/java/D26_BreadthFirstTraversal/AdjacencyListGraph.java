@@ -1,16 +1,24 @@
+package D26_BreadthFirstTraversal;
+
+import GraphContents.Edge;
+import GraphContents.Graph;
+import GraphContents.Node;
+
 import java.util.*;
 
 public class AdjacencyListGraph<E> implements Graph<E> {
-    Map<Node<E>, Set<Node<E>>> adjacencyList;
+    Map<Node<E>, ArrayList<Node<E>>> adjacencyList;
     Map<Node<E>, Map<Node<E>, Edge>> costs;
     Set<Edge<E>> edges;
 
+
     public AdjacencyListGraph() {
-        adjacencyList = new HashMap<>();
+        adjacencyList = new HashMap<Node<E>, ArrayList<Node<E>>>();
 
     }
 
     public Set<Node<E>> getNodes() {
+
         return adjacencyList.keySet();
     }
 
@@ -61,9 +69,8 @@ public class AdjacencyListGraph<E> implements Graph<E> {
     }
 
     @Override
-    public Set<Node<E>> getNeighbors(Node<E> node) {
-        checkNodesExists(start,end);
-        return adjacencyList.get(node);
+    public ArrayList<Node<E>> getNeighbors(Node<E> node) {
+        return node.getNodes();
     }
 
     @Override
@@ -73,7 +80,7 @@ public class AdjacencyListGraph<E> implements Graph<E> {
     }
 
 
-    //like getting an Edge edge = graph.getEdge(seattle, bellingham)
+    //like getting an GraphContents.Edge edge = graph.getEdge(seattle, bellingham)
     //sout("it costs + edge.cost to go from +edge.start to edge.end")
     @Override
     public Edge<E> getEdge(Node<E> start, Node<E> end) {
@@ -91,8 +98,8 @@ public class AdjacencyListGraph<E> implements Graph<E> {
     // write either "node" vs "nodes" in "checkNodeExists" or "checkNodesExists"
     private void checkNodesExists(Node<E> node) {
         if(!adjacencyList.containsKey(node)){
-            String msg = "Attempt to access node that is not in the graph. Node: " + node);
-            throw new IllegalArgumentException(msg)
+            String msg = "Attempt to access node that is not in the graph. GraphContents.Node: " + node;
+            throw new IllegalArgumentException(msg);
         }
     }
 }
