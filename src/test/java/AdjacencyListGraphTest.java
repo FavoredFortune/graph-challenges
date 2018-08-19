@@ -90,207 +90,230 @@ public class AdjacencyListGraphTest {
         washington.addTwoWayEdge(richland, spokane, 144);
     }
 
+//    @Test
+//    public void getNodes() {
+//        assertEquals(10, washington.getNodes().size());
+//    }
+//
+//    @Test
+//    public void getEdges() {
+//        assertEquals(20, washington.getEdges().size());
+//    }
+//
+//    @Test
+//    public void getNeighbors() {
+//        assertEquals(3, washington.getNeighbors(seattle).size());
+//    }
+//
+//    @Test
+//    public void getEdge() {
+//        assertEquals(172, washington.getEdge(ellensberg, spokane).getCost());
+//    }
+//
+//    @Test
+//    public void addEdgeThrowsExceptions1() {
+//        boolean isException = false;
+//        try {
+//            washington.addEdge(seattle, unadded, 0);
+//        } catch (IllegalArgumentException e) {
+//            isException = true;
+//        }
+//        assertTrue(isException);
+//    }
+//
+//    @Test
+//    public void addEdgeThrowsExceptions2() {
+//        boolean isException = false;
+//        try {
+//           washington.addEdge(unadded, seattle, 0);
+//        } catch (IllegalArgumentException e) {
+//            isException = true;
+//        }
+//        assertTrue(isException);
+//    }
+//
+//    @Test
+//    public void addTwoWayEdgeThrowsExceptions() {
+//        boolean isException = false;
+//        try {
+//            washington.addTwoWayEdge(seattle, unadded, 0);
+//        } catch (IllegalArgumentException e) {
+//            isException = true;
+//        }
+//        assertTrue(isException);
+//    }
+//
+//    @Test
+//    public void getEdgeThrowsExceptions1() {
+//        boolean isException = false;
+//        try {
+//            washington.getEdge(seattle, unadded);
+//        } catch (IllegalArgumentException e) {
+//            isException = true;
+//        }
+//        assertTrue(isException);
+//    }
+//
+//    @Test
+//    public void getEdgeThrowsExceptions2() {
+//        boolean isException = false;
+//        try {
+//            washington.getEdge(unadded, seattle);
+//        } catch (IllegalArgumentException e) {
+//            isException = true;
+//        }
+//        assertTrue(isException);
+//    }
+//
+//    @Test
+//    public void isConnectedThrowsExceptions1() {
+//        boolean isException = false;
+//        try {
+//            washington.isConnected(seattle, unadded);
+//        } catch (IllegalArgumentException e) {
+//            isException = true;
+//        }
+//        assertTrue(isException);
+//    }
+//
+//    @Test
+//    public void isConnectedThrowsExceptions2() {
+//        boolean isException = false;
+//        try {
+//            washington.isConnected(unadded, seattle);
+//        } catch (IllegalArgumentException e) {
+//            isException = true;
+//        }
+//        assertTrue(isException);
+//    }
+//
+//    @Test
+//    public void connectedness() {
+//        assertFalse(washington.isConnected(bellingham, tacoma));
+//        assertFalse(washington.isConnected(vancouver, spokane));
+//        assertFalse(washington.isConnected(wallaWalla, yakima));
+//        assertFalse(washington.isConnected(seattle, olympia));
+//
+//        assertTrue(washington.isConnected(ellensberg, spokane));
+//        assertTrue(washington.isConnected(ellensberg, yakima));
+//
+//        assertTrue(washington.isConnected(richland, spokane));
+//        assertTrue(washington.isConnected(richland, yakima));
+//    }
+//
+//    @Test
+//    public void traverseTest() {
+//        List<Node<String>> traversal = breadthFirstTraversal(washington, ellensberg);
+//
+//        Set<Node<String>> firstLevel = new HashSet<>();
+//        firstLevel.add(ellensberg);
+//
+//        Set<Node<String>> secondLevel = new HashSet<>();
+//        secondLevel.add(seattle);
+//        secondLevel.add(spokane);
+//        secondLevel.add(yakima);
+//
+//        Set<Node<String>> thirdLevel = new HashSet<>();
+//        thirdLevel.add(bellingham);
+//        thirdLevel.add(tacoma);
+//        thirdLevel.add(richland);
+//
+//        Set<Node<String>> fourthLevel = new HashSet<>();
+//        fourthLevel.add(olympia);
+//        fourthLevel.add(wallaWalla);
+//
+//        Set<Node<String>> fifthLevel = new HashSet<>();
+//        fifthLevel.add(vancouver);
+//
+//        for (int i = 0; i < traversal.size(); i++) {
+//            Node<String> current = traversal.get(i);
+//            if (i < firstLevel.size()) {
+//                assertTrue(firstLevel.contains(current));
+//            } else if (i < firstLevel.size() + secondLevel.size()) {
+//                assertTrue(secondLevel.contains(current));
+//            } else if (i < firstLevel.size() + secondLevel.size() + thirdLevel.size()) {
+//                assertTrue(thirdLevel.contains(current));
+//            } else if (i < firstLevel.size() + secondLevel.size() + thirdLevel.size() + fourthLevel.size()) {
+//                assertTrue(fourthLevel.contains(current));
+//            } else if (i < firstLevel.size() + secondLevel.size() + thirdLevel.size() + fourthLevel.size() + fifthLevel.size()) {
+//                assertTrue(fifthLevel.contains(current));
+//            }
+//        }
+//    }
+//
+//    public List<Node<String>> breadthFirstTraversal(Graph<String> graph, Node<String> start) {
+//    }
+//
+//    @Test
+//    public void possibleDirectBusinessTrip() {
+//        List<Node<String>> itinerary = new ArrayList<>();
+//        itinerary.add(bellingham);
+//        itinerary.add(seattle);
+//        itinerary.add(ellensberg);
+//        itinerary.add(yakima);
+//        itinerary.add(richland);
+//        itinerary.add(wallaWalla);
+//
+//        assertEquals(368, tripCost(washington, itinerary));
+//    }
+//
+//    @Test
+//    public void impossibleDirectBusinessTrip() {
+//        List<Node<String>> itinerary = new ArrayList<>();
+//        itinerary.add(bellingham);
+//        itinerary.add(seattle);
+//        itinerary.add(ellensberg);
+//        itinerary.add(wallaWalla);
+//
+//        assertEquals(0, tripCost(washington, itinerary));
+//    }
+//
+//    public int tripCost(Graph graph, List<Node<String>> itinerary) {
+//    }
+//
+//    @Test
+//    public void islands() {
+//        Graph<String> usa = new AdjacencyListGraph<>();
+//
+//        Node<String> alaska = new Node<>("Alaska");
+//        Node<String> hawaii = new Node<>("Hawaii");
+//        Node<String> washington = new Node<>("Washington");
+//        Node<String> oregon = new Node<>("Oregon");
+//
+//        usa.addNode(alaska);
+//        usa.addNode(hawaii);
+//        usa.addNode(washington);
+//        usa.addNode(oregon);
+//
+//        usa.addTwoWayEdge(washington, oregon);
+//
+//        assertEquals(0, numIslands(this.washington));
+//        assertEquals(2, numIslands(usa));
+//    }
+//
+//    public int numIslands(Graph graph) {
+//    }
     @Test
-    public void getNodes() {
-        assertEquals(10, washington.getNodes().size());
+    public void visitFromBellingham(){
+        visitAllCities(washington, bellingham);
     }
 
-    @Test
-    public void getEdges() {
-        assertEquals(20, washington.getEdges().size());
-    }
+    public void visitAllCities(Graph<String> graph, Node<String> start){
+        Queue<Node<String>> qq = new LinkedList<>();
+        Set<Node<String>> isEnqueued = new HashSet<>();
 
-    @Test
-    public void getNeighbors() {
-        assertEquals(3, washington.getNeighbors(seattle).size());
-    }
+        qq.add(start);
+        isEnqueued.add(start);
 
-    @Test
-    public void getEdge() {
-        assertEquals(172, washington.getEdge(ellensberg, spokane).getCost());
-    }
+        while(!qq.isEmpty()){
+            Node<String> current = qq.poll();
 
-    @Test
-    public void addEdgeThrowsExceptions1() {
-        boolean isException = false;
-        try {
-            washington.addEdge(seattle, unadded, 0);
-        } catch (IllegalArgumentException e) {
-            isException = true;
-        }
-        assertTrue(isException);
-    }
+            for (Node<String> neighbor: graph.getNeighbors(current)){
+                if(!isEnqueued.contains(neighbor)){
+                    qq.add(neighbor);
 
-    @Test
-    public void addEdgeThrowsExceptions2() {
-        boolean isException = false;
-        try {
-           washington.addEdge(unadded, seattle, 0);
-        } catch (IllegalArgumentException e) {
-            isException = true;
-        }
-        assertTrue(isException);
-    }
-
-    @Test
-    public void addTwoWayEdgeThrowsExceptions() {
-        boolean isException = false;
-        try {
-            washington.addTwoWayEdge(seattle, unadded, 0);
-        } catch (IllegalArgumentException e) {
-            isException = true;
-        }
-        assertTrue(isException);
-    }
-
-    @Test
-    public void getEdgeThrowsExceptions1() {
-        boolean isException = false;
-        try {
-            washington.getEdge(seattle, unadded);
-        } catch (IllegalArgumentException e) {
-            isException = true;
-        }
-        assertTrue(isException);
-    }
-
-    @Test
-    public void getEdgeThrowsExceptions2() {
-        boolean isException = false;
-        try {
-            washington.getEdge(unadded, seattle);
-        } catch (IllegalArgumentException e) {
-            isException = true;
-        }
-        assertTrue(isException);
-    }
-
-    @Test
-    public void isConnectedThrowsExceptions1() {
-        boolean isException = false;
-        try {
-            washington.isConnected(seattle, unadded);
-        } catch (IllegalArgumentException e) {
-            isException = true;
-        }
-        assertTrue(isException);
-    }
-
-    @Test
-    public void isConnectedThrowsExceptions2() {
-        boolean isException = false;
-        try {
-            washington.isConnected(unadded, seattle);
-        } catch (IllegalArgumentException e) {
-            isException = true;
-        }
-        assertTrue(isException);
-    }
-
-    @Test
-    public void connectedness() {
-        assertFalse(washington.isConnected(bellingham, tacoma));
-        assertFalse(washington.isConnected(vancouver, spokane));
-        assertFalse(washington.isConnected(wallaWalla, yakima));
-        assertFalse(washington.isConnected(seattle, olympia));
-
-        assertTrue(washington.isConnected(ellensberg, spokane));
-        assertTrue(washington.isConnected(ellensberg, yakima));
-
-        assertTrue(washington.isConnected(richland, spokane));
-        assertTrue(washington.isConnected(richland, yakima));
-    }
-
-    @Test
-    public void traverseTest() {
-        List<Node<String>> traversal = breadthFirstTraversal(washington, ellensberg);
-
-        Set<Node<String>> firstLevel = new HashSet<>();
-        firstLevel.add(ellensberg);
-
-        Set<Node<String>> secondLevel = new HashSet<>();
-        secondLevel.add(seattle);
-        secondLevel.add(spokane);
-        secondLevel.add(yakima);
-
-        Set<Node<String>> thirdLevel = new HashSet<>();
-        thirdLevel.add(bellingham);
-        thirdLevel.add(tacoma);
-        thirdLevel.add(richland);
-
-        Set<Node<String>> fourthLevel = new HashSet<>();
-        fourthLevel.add(olympia);
-        fourthLevel.add(wallaWalla);
-
-        Set<Node<String>> fifthLevel = new HashSet<>();
-        fifthLevel.add(vancouver);
-
-        for (int i = 0; i < traversal.size(); i++) {
-            Node<String> current = traversal.get(i);
-            if (i < firstLevel.size()) {
-                assertTrue(firstLevel.contains(current));
-            } else if (i < firstLevel.size() + secondLevel.size()) {
-                assertTrue(secondLevel.contains(current));
-            } else if (i < firstLevel.size() + secondLevel.size() + thirdLevel.size()) {
-                assertTrue(thirdLevel.contains(current));
-            } else if (i < firstLevel.size() + secondLevel.size() + thirdLevel.size() + fourthLevel.size()) {
-                assertTrue(fourthLevel.contains(current));
-            } else if (i < firstLevel.size() + secondLevel.size() + thirdLevel.size() + fourthLevel.size() + fifthLevel.size()) {
-                assertTrue(fifthLevel.contains(current));
+                }
             }
         }
-    }
-
-    public List<Node<String>> breadthFirstTraversal(Graph<String> graph, Node<String> start) {
-    }
-
-    @Test
-    public void possibleDirectBusinessTrip() {
-        List<Node<String>> itinerary = new ArrayList<>();
-        itinerary.add(bellingham);
-        itinerary.add(seattle);
-        itinerary.add(ellensberg);
-        itinerary.add(yakima);
-        itinerary.add(richland);
-        itinerary.add(wallaWalla);
-
-        assertEquals(368, tripCost(washington, itinerary));
-    }
-
-    @Test
-    public void impossibleDirectBusinessTrip() {
-        List<Node<String>> itinerary = new ArrayList<>();
-        itinerary.add(bellingham);
-        itinerary.add(seattle);
-        itinerary.add(ellensberg);
-        itinerary.add(wallaWalla);
-
-        assertEquals(0, tripCost(washington, itinerary));
-    }
-
-    public int tripCost(Graph graph, List<Node<String>> itinerary) {
-    }
-
-    @Test
-    public void islands() {
-        Graph<String> usa = new AdjacencyListGraph<>();
-
-        Node<String> alaska = new Node<>("Alaska");
-        Node<String> hawaii = new Node<>("Hawaii");
-        Node<String> washington = new Node<>("Washington");
-        Node<String> oregon = new Node<>("Oregon");
-
-        usa.addNode(alaska);
-        usa.addNode(hawaii);
-        usa.addNode(washington);
-        usa.addNode(oregon);
-
-        usa.addTwoWayEdge(washington, oregon);
-
-        assertEquals(0, numIslands(this.washington));
-        assertEquals(2, numIslands(usa));
-    }
-
-    public int numIslands(Graph graph) {
     }
 }
