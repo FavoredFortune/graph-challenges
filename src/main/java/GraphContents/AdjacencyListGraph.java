@@ -36,7 +36,7 @@ public class AdjacencyListGraph<E> implements Graph<E> {
     @Override
     public void addEdge(Node<E> start, Node<E> end) {
         checkNodesExists(start,end);
-
+        addEdge(start,end, 0);
         addEdge(start,end);
         //creates an edge by connecting two nodes to each other
         adjacencyList.get(start).add(end);
@@ -45,20 +45,19 @@ public class AdjacencyListGraph<E> implements Graph<E> {
     @Override
     public void addEdge(Node<E> start, Node<E> end, int cost) {
         checkNodesExists(start,end);
-        addEdge(start,end, 0);
-       Map<Node<E>, Edge> options = costs.get(start);
-       Edge<E> edge = new Edge(start, end, cost);
-       adjacencyList.get(start).add(end);
-       //watch video at 551
-//       options.put(end, cost);
-       edges.add(edge);
+
+        Map<Node<E>, Edge> options = costs.get(start);
+        Edge<E> edge = new Edge(start, end, cost);
+
+        adjacencyList.get(start).add(end);
+        options.put(end, edge);
+        edges.add(edge);
     }
 
     @Override
     public void addTwoWayEdge(Node<E> start, Node<E> end) {
         checkNodesExists(start,end);
-        addEdge(start, end);
-        addEdge(end,start);
+        addTwoWayEdge(start,end, 0);
     }
 
     @Override
@@ -70,7 +69,8 @@ public class AdjacencyListGraph<E> implements Graph<E> {
 
     @Override
     public ArrayList<Node<E>> getNeighbors(Node<E> node) {
-        return node.getNodes();
+        checkNodesExists(node);
+        return adjacencyList.get(node);
     }
 
     @Override
@@ -81,7 +81,7 @@ public class AdjacencyListGraph<E> implements Graph<E> {
 
 
     //like getting an GraphContents.Edge edge = graph.getEdge(seattle, bellingham)
-    //sout("it costs + edge.cost to go from +edge.start to edge.end")
+    //sout("it costs " + edge.cost + "to go from " + edge.start + " to " + edge.end")
     @Override
     public Edge<E> getEdge(Node<E> start, Node<E> end) {
         checkNodesExists(start,end);
