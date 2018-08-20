@@ -1,16 +1,24 @@
+package GraphContents;
+
+import GraphContents.Edge;
+import GraphContents.Graph;
+import GraphContents.Node;
+
 import java.util.*;
 
 public class AdjacencyListGraph<E> implements Graph<E> {
-    Map<Node<E>, Set<Node<E>>> adjacencyList;
+    Map<Node<E>, ArrayList<Node<E>>> adjacencyList;
     Map<Node<E>, Map<Node<E>, Edge>> costs;
     Set<Edge<E>> edges;
 
+
     public AdjacencyListGraph() {
-        adjacencyList = new HashMap<>();
+        adjacencyList = new HashMap<Node<E>, ArrayList<Node<E>>>();
 
     }
 
     public Set<Node<E>> getNodes() {
+
         return adjacencyList.keySet();
     }
 
@@ -28,7 +36,7 @@ public class AdjacencyListGraph<E> implements Graph<E> {
     @Override
     public void addEdge(Node<E> start, Node<E> end) {
         checkNodesExists(start,end);
-
+        addEdge(start,end, 0);
         addEdge(start,end);
         //creates an edge by connecting two nodes to each other
         adjacencyList.get(start).add(end);
@@ -37,20 +45,19 @@ public class AdjacencyListGraph<E> implements Graph<E> {
     @Override
     public void addEdge(Node<E> start, Node<E> end, int cost) {
         checkNodesExists(start,end);
-        addEdge(start,end, 0);
-       Map<Node<E>, Edge> options = costs.get(start);
-       Edge<E> edge = new Edge(start, end, cost);
-       adjacencyList.get(start).add(end);
-       //watch video at 551
-//       options.put(end, cost);
-       edges.add(edge);
+
+        Map<Node<E>, Edge> options = costs.get(start);
+        Edge<E> edge = new Edge(start, end, cost);
+
+        adjacencyList.get(start).add(end);
+        options.put(end, edge);
+        edges.add(edge);
     }
 
     @Override
     public void addTwoWayEdge(Node<E> start, Node<E> end) {
         checkNodesExists(start,end);
-        addEdge(start, end);
-        addEdge(end,start);
+        addTwoWayEdge(start,end, 0);
     }
 
     @Override
@@ -61,8 +68,8 @@ public class AdjacencyListGraph<E> implements Graph<E> {
     }
 
     @Override
-    public Set<Node<E>> getNeighbors(Node<E> node) {
-        checkNodesExists(start,end);
+    public ArrayList<Node<E>> getNeighbors(Node<E> node) {
+        checkNodesExists(node);
         return adjacencyList.get(node);
     }
 
@@ -73,8 +80,8 @@ public class AdjacencyListGraph<E> implements Graph<E> {
     }
 
 
-    //like getting an Edge edge = graph.getEdge(seattle, bellingham)
-    //sout("it costs + edge.cost to go from +edge.start to edge.end")
+    //like getting an GraphContents.Edge edge = graph.getEdge(seattle, bellingham)
+    //sout("it costs " + edge.cost + "to go from " + edge.start + " to " + edge.end")
     @Override
     public Edge<E> getEdge(Node<E> start, Node<E> end) {
         checkNodesExists(start,end);
@@ -91,8 +98,8 @@ public class AdjacencyListGraph<E> implements Graph<E> {
     // write either "node" vs "nodes" in "checkNodeExists" or "checkNodesExists"
     private void checkNodesExists(Node<E> node) {
         if(!adjacencyList.containsKey(node)){
-            String msg = "Attempt to access node that is not in the graph. Node: " + node);
-            throw new IllegalArgumentException(msg)
+            String msg = "Attempt to access node that is not in the graph. GraphContents.Node: " + node;
+            throw new IllegalArgumentException(msg);
         }
     }
 }

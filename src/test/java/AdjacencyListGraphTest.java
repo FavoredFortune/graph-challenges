@@ -1,9 +1,8 @@
+import GraphContents.Node;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.*;
-
-import static org.junit.Assert.*;
 
 public class AdjacencyListGraphTest {
     /* Washington State:
@@ -22,7 +21,7 @@ public class AdjacencyListGraphTest {
     vancouver                       walla walla
      */
 
-    private Graph<String> washington;
+    private GraphContents.Graph<String> washington;
     private Node<String> bellingham;
     private Node<String> seattle;
     private Node<String> tacoma;
@@ -39,7 +38,7 @@ public class AdjacencyListGraphTest {
 
     @Before
     public void setUp() throws Exception {
-        washington = new AdjacencyListGraph<>();
+        washington = new GraphContents.AdjacencyListGraph<>();
         bellingham = new Node<>("Bellingham");
         seattle = new Node<>("Seattle");
         tacoma = new Node<>("Tacoma");
@@ -203,30 +202,30 @@ public class AdjacencyListGraphTest {
 //
 //    @Test
 //    public void traverseTest() {
-//        List<Node<String>> traversal = breadthFirstTraversal(washington, ellensberg);
+//        List<GraphContents.Node<String>> traversal = breadthFirstTraversal(washington, ellensberg);
 //
-//        Set<Node<String>> firstLevel = new HashSet<>();
+//        Set<GraphContents.Node<String>> firstLevel = new HashSet<>();
 //        firstLevel.add(ellensberg);
 //
-//        Set<Node<String>> secondLevel = new HashSet<>();
+//        Set<GraphContents.Node<String>> secondLevel = new HashSet<>();
 //        secondLevel.add(seattle);
 //        secondLevel.add(spokane);
 //        secondLevel.add(yakima);
 //
-//        Set<Node<String>> thirdLevel = new HashSet<>();
+//        Set<GraphContents.Node<String>> thirdLevel = new HashSet<>();
 //        thirdLevel.add(bellingham);
 //        thirdLevel.add(tacoma);
 //        thirdLevel.add(richland);
 //
-//        Set<Node<String>> fourthLevel = new HashSet<>();
+//        Set<GraphContents.Node<String>> fourthLevel = new HashSet<>();
 //        fourthLevel.add(olympia);
 //        fourthLevel.add(wallaWalla);
 //
-//        Set<Node<String>> fifthLevel = new HashSet<>();
+//        Set<GraphContents.Node<String>> fifthLevel = new HashSet<>();
 //        fifthLevel.add(vancouver);
 //
 //        for (int i = 0; i < traversal.size(); i++) {
-//            Node<String> current = traversal.get(i);
+//            GraphContents.Node<String> current = traversal.get(i);
 //            if (i < firstLevel.size()) {
 //                assertTrue(firstLevel.contains(current));
 //            } else if (i < firstLevel.size() + secondLevel.size()) {
@@ -241,12 +240,12 @@ public class AdjacencyListGraphTest {
 //        }
 //    }
 //
-//    public List<Node<String>> breadthFirstTraversal(Graph<String> graph, Node<String> start) {
+//    public List<GraphContents.Node<String>> breadthFirstTraversal(GraphContents.Graph<String> graph, GraphContents.Node<String> start) {
 //    }
 //
 //    @Test
 //    public void possibleDirectBusinessTrip() {
-//        List<Node<String>> itinerary = new ArrayList<>();
+//        List<GraphContents.Node<String>> itinerary = new ArrayList<>();
 //        itinerary.add(bellingham);
 //        itinerary.add(seattle);
 //        itinerary.add(ellensberg);
@@ -259,7 +258,7 @@ public class AdjacencyListGraphTest {
 //
 //    @Test
 //    public void impossibleDirectBusinessTrip() {
-//        List<Node<String>> itinerary = new ArrayList<>();
+//        List<GraphContents.Node<String>> itinerary = new ArrayList<>();
 //        itinerary.add(bellingham);
 //        itinerary.add(seattle);
 //        itinerary.add(ellensberg);
@@ -268,17 +267,17 @@ public class AdjacencyListGraphTest {
 //        assertEquals(0, tripCost(washington, itinerary));
 //    }
 //
-//    public int tripCost(Graph graph, List<Node<String>> itinerary) {
+//    public int tripCost(GraphContents.Graph graph, List<GraphContents.Node<String>> itinerary) {
 //    }
 //
 //    @Test
 //    public void islands() {
-//        Graph<String> usa = new AdjacencyListGraph<>();
+//        GraphContents.Graph<String> usa = new GraphContents.AdjacencyListGraph<>();
 //
-//        Node<String> alaska = new Node<>("Alaska");
-//        Node<String> hawaii = new Node<>("Hawaii");
-//        Node<String> washington = new Node<>("Washington");
-//        Node<String> oregon = new Node<>("Oregon");
+//        GraphContents.Node<String> alaska = new GraphContents.Node<>("Alaska");
+//        GraphContents.Node<String> hawaii = new GraphContents.Node<>("Hawaii");
+//        GraphContents.Node<String> washington = new GraphContents.Node<>("Washington");
+//        GraphContents.Node<String> oregon = new GraphContents.Node<>("Oregon");
 //
 //        usa.addNode(alaska);
 //        usa.addNode(hawaii);
@@ -291,14 +290,16 @@ public class AdjacencyListGraphTest {
 //        assertEquals(2, numIslands(usa));
 //    }
 //
-//    public int numIslands(Graph graph) {
+//    public int numIslands(GraphContents.Graph graph) {
 //    }
+
     @Test
     public void visitFromBellingham(){
         visitAllCities(washington, bellingham);
     }
 
-    public void visitAllCities(Graph<String> graph, Node<String> start){
+    //breadth first traversal - WhiteBoard 26
+    public void visitAllCities(GraphContents.Graph<String> graph, Node<String> start){
         Queue<Node<String>> qq = new LinkedList<>();
         Set<Node<String>> isEnqueued = new HashSet<>();
 
@@ -307,11 +308,12 @@ public class AdjacencyListGraphTest {
 
         while(!qq.isEmpty()){
             Node<String> current = qq.poll();
+            System.out.println("visiting: " + current);
 
             for (Node<String> neighbor: graph.getNeighbors(current)){
                 if(!isEnqueued.contains(neighbor)){
                     qq.add(neighbor);
-
+                    isEnqueued.add(neighbor);
                 }
             }
         }
