@@ -1,4 +1,4 @@
-package D26_BreadthFirstTraversal;
+package GraphContents;
 
 import GraphContents.Edge;
 import GraphContents.Graph;

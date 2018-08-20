@@ -38,7 +38,7 @@
 //
 //    @Before
 //    public void setUp() throws Exception {
-//        washington = new D26_BreadthFirstTraversal.AdjacencyListGraph<>();
+//        washington = new GraphContents.AdjacencyListGraph<>();
 //        bellingham = new Node<>("Bellingham");
 //        seattle = new Node<>("Seattle");
 //        tacoma = new Node<>("Tacoma");
@@ -272,7 +272,7 @@
 ////
 ////    @Test
 ////    public void islands() {
-////        GraphContents.Graph<String> usa = new D26_BreadthFirstTraversal.AdjacencyListGraph<>();
+////        GraphContents.Graph<String> usa = new GraphContents.AdjacencyListGraph<>();
 ////
 ////        GraphContents.Node<String> alaska = new GraphContents.Node<>("Alaska");
 ////        GraphContents.Node<String> hawaii = new GraphContents.Node<>("Hawaii");
