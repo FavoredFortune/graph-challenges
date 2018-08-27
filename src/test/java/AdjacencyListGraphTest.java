@@ -285,7 +285,6 @@ public class AdjacencyListGraphTest {
         return itinerary;
     }
 
-
     //whiteboard 27 get edges - TEST
     @Test
     public void possibleDirectBusinessTrip () {
@@ -299,7 +298,6 @@ public class AdjacencyListGraphTest {
 
         assertEquals(368, tripCost(washington, itinerary));
     }
-
 
     //whiteboard 27 get edges - TEST
     @Test
@@ -366,13 +364,13 @@ public class AdjacencyListGraphTest {
         return island;
     }
 
-    //Whiteboard 26 breadth traversal - TEST
+    //whiteboard 26 breadth first traversal TEST
     @Test
     public void visitFromBellingham () {
         visitAllCities(washington, bellingham);
     }
 
-    //Whiteboard 26 breadth traversal
+    //whiteboard 26 breadth first traversal
     public void visitAllCities(GraphContents.Graph < String > graph, Node < String > start){
         Queue<Node<String>> qq = new LinkedList<>();
         Set<Node<String>> isEnqueued = new HashSet<>();
