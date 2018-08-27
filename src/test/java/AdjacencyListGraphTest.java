@@ -246,7 +246,8 @@ public class AdjacencyListGraphTest {
         }
     }
 
-    //whiteboard 26 work plus lecture
+    //whiteboard 26 breadth first traversal
+
     public List<GraphContents.Node<String>> breadthFirstTraversal(GraphContents.Graph<String> graph, GraphContents.Node<String> start) {
         //thinking things through with pseudo code
         //get data from start node and use it's int value to begin
@@ -285,6 +286,8 @@ public class AdjacencyListGraphTest {
         return itinerary;
     }
 
+
+    //whiteboard 27 get edges TEST
     @Test
     public void possibleDirectBusinessTrip () {
         List<GraphContents.Node<String>> itinerary = new ArrayList<>();
@@ -298,6 +301,8 @@ public class AdjacencyListGraphTest {
         assertEquals(368, tripCost(washington, itinerary));
     }
 
+
+    //whiteboard 27 get edges TEST
     @Test
     public void impossibleDirectBusinessTrip () {
         List<GraphContents.Node<String>> itinerary = new ArrayList<>();
@@ -309,6 +314,8 @@ public class AdjacencyListGraphTest {
         assertEquals(0, tripCost(washington, itinerary));
     }
 
+
+    //whiteboard 27 get edges
     public int tripCost (GraphContents.Graph graph, List < GraphContents.Node < String >> itinerary){
         int cost = 0;
 
@@ -359,13 +366,14 @@ public class AdjacencyListGraphTest {
         return island;
     }
 
-    //test whiteboard 26 -breadth traversal
+
+    //whiteboard 26 breadth first traversal TEST
     @Test
     public void visitFromBellingham () {
         visitAllCities(washington, bellingham);
     }
 
-    //whiteboard 26 - breadth traversal
+    //whiteboard 26 breadth first traversal
     public void visitAllCities(GraphContents.Graph < String > graph, Node < String > start){
         Queue<Node<String>> qq = new LinkedList<>();
         Set<Node<String>> isEnqueued = new HashSet<>();
