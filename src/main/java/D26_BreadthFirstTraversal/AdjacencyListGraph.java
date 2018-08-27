@@ -36,7 +36,7 @@ public class AdjacencyListGraph<E> implements Graph<E> {
     public void addEdge(Node<E> start, Node<E> end) {
         checkNodesExists(start,end);
 
-        addEdge(start,end);
+        addEdge(start,end, 0);
         //creates an edge by connecting two nodes to each other
         adjacencyList.get(start).add(end);
     }
@@ -44,7 +44,6 @@ public class AdjacencyListGraph<E> implements Graph<E> {
     @Override
     public void addEdge(Node<E> start, Node<E> end, int cost) {
         checkNodesExists(start,end);
-        addEdge(start,end, 0);
 
         Map<Node<E>, Edge> options = costs.get(start);
         Edge<E> edge = new Edge(start, end, cost);
