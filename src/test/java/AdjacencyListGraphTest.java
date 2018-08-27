@@ -273,6 +273,7 @@ public class AdjacencyListGraphTest {
             //then enqueue (add) it
             itinerary.add(current);
 
+            //from class
             for (Node<String> node : graph.getNeighbors(current)) {
                 if (!addToItenerary.contains(node)) {
                     queue.add(node);
@@ -311,6 +312,7 @@ public class AdjacencyListGraphTest {
         int cost = 0;
 
         //to calculate the cost see if nodes are connected and find and add up costs
+        //bit from lecture but also from looking at classmate, Brandon Fenty's repo
         for (int i = 0; i < itinerary.size() - 1; i ++) {
             Node current = itinerary.get(i);
             Node next = itinerary.get(i+1);
@@ -345,8 +347,17 @@ public class AdjacencyListGraphTest {
         assertEquals(2, numIslands(usa));
     }
 
-    public int numIslands (GraphContents.Graph graph){
+    public int numIslands (GraphContents.Graph<String> graph){
+        int island =0;
+        //working on for each use more
+        for (Node<String> node: graph.getNodes()){
+            if(graph.getNeighbors(node).isEmpty()){
+                island++;
+            }
+        }
+        return island;
     }
+
     @Test
     public void visitFromBellingham () {
         visitAllCities(washington, bellingham);
