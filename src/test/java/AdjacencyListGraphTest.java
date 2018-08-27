@@ -246,8 +246,7 @@ public class AdjacencyListGraphTest {
         }
     }
 
-    //whiteboard 26 breadth first traversal
-
+    //whiteboard 26 - breadth first traversal 
     public List<GraphContents.Node<String>> breadthFirstTraversal(GraphContents.Graph<String> graph, GraphContents.Node<String> start) {
         //thinking things through with pseudo code
         //get data from start node and use it's int value to begin
@@ -286,8 +285,7 @@ public class AdjacencyListGraphTest {
         return itinerary;
     }
 
-
-    //whiteboard 27 get edges TEST
+    //whiteboard 27 get edges - TEST
     @Test
     public void possibleDirectBusinessTrip () {
         List<GraphContents.Node<String>> itinerary = new ArrayList<>();
@@ -301,8 +299,7 @@ public class AdjacencyListGraphTest {
         assertEquals(368, tripCost(washington, itinerary));
     }
 
-
-    //whiteboard 27 get edges TEST
+    //whiteboard 27 get edges - TEST
     @Test
     public void impossibleDirectBusinessTrip () {
         List<GraphContents.Node<String>> itinerary = new ArrayList<>();
@@ -313,7 +310,6 @@ public class AdjacencyListGraphTest {
 
         assertEquals(0, tripCost(washington, itinerary));
     }
-
 
     //whiteboard 27 get edges
     public int tripCost (GraphContents.Graph graph, List < GraphContents.Node < String >> itinerary){
@@ -335,6 +331,7 @@ public class AdjacencyListGraphTest {
         return cost;
     }
 
+    //whiteboard 28 Islands - TEST
     @Test
     public void islands () {
         GraphContents.Graph<String> usa = new D26_BreadthFirstTraversal.AdjacencyListGraph<>();
@@ -355,6 +352,7 @@ public class AdjacencyListGraphTest {
         assertEquals(2, numIslands(usa));
     }
 
+    //whiteboard 28 Islands
     public int numIslands (GraphContents.Graph<String> graph){
         int island =0;
         //working on for each use more
@@ -365,7 +363,6 @@ public class AdjacencyListGraphTest {
         }
         return island;
     }
-
 
     //whiteboard 26 breadth first traversal TEST
     @Test
