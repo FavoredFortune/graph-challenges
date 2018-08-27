@@ -7,29 +7,28 @@ import GraphContents.Node;
 import java.util.*;
 
 public class AdjacencyListGraph<E> implements Graph<E> {
-    Map<Node<E>, ArrayList<Node<E>>> adjacencyList;
+    Map<Node<E>, HashSet<Node<E>>> adjacencyList;
     Map<Node<E>, Map<Node<E>, Edge>> costs;
     Set<Edge<E>> edges;
 
 
     public AdjacencyListGraph() {
-        adjacencyList = new HashMap<Node<E>, ArrayList<Node<E>>>();
-
+        adjacencyList = new HashMap<>();
+        costs = new HashMap<>();
+        edges = new HashSet<>();
     }
 
     public Set<Node<E>> getNodes() {
-
         return adjacencyList.keySet();
     }
 
     public Set<Edge<E>> getEdges() {
         return edges;
-
     }
 
     @Override
     public void addNode(Node<E> node) {
-        adjacencyList.put(node, new ArrayList<>());
+        adjacencyList.put(node, new HashSet<>());
         costs.put(node, new HashMap<>());
     }
 
@@ -46,12 +45,13 @@ public class AdjacencyListGraph<E> implements Graph<E> {
     public void addEdge(Node<E> start, Node<E> end, int cost) {
         checkNodesExists(start,end);
         addEdge(start,end, 0);
-       Map<Node<E>, Edge> options = costs.get(start);
-       Edge<E> edge = new Edge(start, end, cost);
-       adjacencyList.get(start).add(end);
-       //watch video at 551
-//       options.put(end, cost);
-       edges.add(edge);
+
+        Map<Node<E>, Edge> options = costs.get(start);
+        Edge<E> edge = new Edge(start, end, cost);
+        adjacencyList.get(start).add(end);
+
+        options.put(end, edge);
+        edges.add(edge);
     }
 
     @Override
@@ -69,16 +69,16 @@ public class AdjacencyListGraph<E> implements Graph<E> {
     }
 
     @Override
-    public ArrayList<Node<E>> getNeighbors(Node<E> node) {
-        return node.getNodes();
+    public Set<Node<E>> getNeighbors(Node<E> node) {
+        checkNodesExists(node);
+        return adjacencyList.get(node);
     }
 
     @Override
     public boolean isConnected(Node<E> start, Node<E> end) {
         checkNodesExists(start,end);
-        return (adjacencyList.get(start).contains(end));
+        return adjacencyList.get(start).contains(end);
     }
-
 
     //like getting an GraphContents.Edge edge = graph.getEdge(seattle, bellingham)
     //sout("it costs + edge.cost to go from +edge.start to edge.end")
